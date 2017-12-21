@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	    <meta name="format-detection" content="telephone=no, email=no" />
+		<title>注册</title>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/main.css"/>
+		<script src="js/scale.js"></script>
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body style="background: #ecf0f1;">
+		<header class="l_regin_head l_head">
+			<a href="javascript:;" style="background: url(images/back.png) no-repeat left center;"></a>
+			<h2>注册</h2>
+		</header>
+		<main class="l_main l_regin_main">
+			<form>
+				<div>
+					<i style="background:url(images/phone.png) no-repeat center center;"></i>
+					<input type="text" placeholder="请输入手机号"/>
+				</div>
+				<div>
+					<i style="background:url(images/mima.png) no-repeat center center;"></i>
+					<input type="password" placeholder="请输入密码" style="width: 70%"/>
+					<input type="button" style="width: 20%;font-size: 24px;color: #666666;height: 38px;border-left: 1px solid #999999;text-align: center;margin-top: 20px;line-height: 38px;background: none;" value="获取验证码" onclick="sendCode(this)" />
+				</div>
+				<div>
+					<i style="background:url(images/regin.png) no-repeat center center;"></i>
+					<input type="password" placeholder="请输入密码"/>
+					<i style="background:url(images/eye.png) no-repeat center center;"></i>
+				</div>
+				<p>密码为6-20位数字、字母组合，可含下划线</p>
+				<input type="submit" value="注册"/>
+				<section><span class="l_check" style="border: 1px solid #669cf2;border-radius: 100%;margin-top: 5px;"><input type="checkbox"></span><span>还没有账户？<a href="javascript:;">注册协议</a></span></section>
+			</form>
+		</main>
+		
+		
+		
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script>
+			$(function(){
+				$('.l_check').click(function(){
+					if ($(this).children('input').is(':checked')) {
+						$(this).css('background','url(images/check1.png) no-repeat center center');
+					} else{
+						$(this).css('background','none');
+					}
+				});
+				
+				
+			})
+		</script>
+		<script>
+			 var clock = '';
+			 var nums = 60;
+			 var btn;
+			 function sendCode(thisBtn)
+			 { 
+			 btn = thisBtn;
+			 btn.disabled = true; //将按钮置为不可点击
+			 btn.value = nums+'s';
+			 clock = setInterval(doLoop, 1000); //一秒执行一次
+			 }
+			 function doLoop()
+			 {
+			 nums--;
+			 if(nums > 0){
+			  btn.value = nums+'s';
+			 }else{
+			  clearInterval(clock); //清除js定时器
+			  btn.disabled = false;
+			  btn.value = '发送验证码';
+			  nums = 60; //重置时间
+			 }
+			 }
+		</script>
+	</body>
+</html>
